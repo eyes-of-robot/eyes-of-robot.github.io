@@ -230,7 +230,7 @@
 <p>引入spring-context可以看到，该模块中包含spring-aop、spring-beans、spring-core、spring-expression</p>
 </li>
 </ul>
-<p><img src="/..%5Cimages%5Cimage-20241009221002316.png" alt="image-20241009221002316"></p>
+<p><img src="/../images/image-20241009221002316.png" alt="image-20241009221002316"></p>
 <p>其中spring-core、spring-beans为Spring IoC的核心包</p>
 <ul>
 <li><p>创建一个User类，用于Spring IoC管理</p>
@@ -243,7 +243,7 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> com.test.ioc.User;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.support.ClassPathXmlApplicationContext;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">UserTest</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">ClassPathXmlApplicationContext</span> <span class="variable">context</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ClassPathXmlApplicationContext</span>(<span class="string">&quot;Spring.xml&quot;</span>);</span><br><span class="line">        <span class="type">User</span> <span class="variable">userTest</span> <span class="operator">=</span> context.getBean(<span class="string">&quot;user&quot;</span>, User.class);</span><br><span class="line">        System.out.println(userTest);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <p>项目结构截图如下</p>
-<p><img src="/..%5Cimages%5Cimage-20241009222548588.png" alt="image-20241009222548588"></p>
+<p><img src="/../images/image-20241009222548588.png" alt="image-20241009222548588"></p>
 </li>
 </ul>
 
