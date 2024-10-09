@@ -221,12 +221,60 @@
         </header>
 
         <div class="post-content">
-            <h3 id="java-jar-制作与执行"><a href="#java-jar-制作与执行" class="headerlink" title="java -jar 制作与执行"></a>java -jar 制作与执行</h3><ol>
+            <h3 id="java-jar-制作与执行"><a href="#java-jar-制作与执行" class="headerlink" title="java -jar 制作与执行"></a>java -jar 制作与执行</h3><ul>
 <li>新建ClassA.java文件</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">ClassA</span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> testClassA &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;This is ClassA&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ClassA</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">testClassA</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;This is ClassA&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h3 id="java-cp使用"><a href="#java-cp使用" class="headerlink" title="java -cp使用"></a>java -cp使用</h3>
+<ul>
+<li>新建ClassB.java</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">ClassB</span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        ClassA.testClassA();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>生成class文件</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">javac ClassA.java</span><br><span class="line">javac ClassB.java</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>创建META-INF&#x2F;MENIFEST.MF文件</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Manifest-Version: 1.0</span><br><span class="line">Created-By: 1.8.0_121 (Oracle Corporation)</span><br><span class="line">Main-Class: ClassB</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>生成jar包</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jar -cvfm hello.jar META-INF/MENIFEST.MF ClassA.class ClassB.class</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>执行</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -jar hello.jar</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意：jar后面不用加主类了，因为MENIFEST.MF中已经有Main-Class了</strong></p>
+<h3 id="java-cp使用"><a href="#java-cp使用" class="headerlink" title="java -cp使用"></a>java -cp使用</h3><ul>
+<li>新建ClassA.java文件</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ClassA</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">testClassA</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;This is ClassA&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>新建ClassB.java</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">ClassB</span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        ClassA.testClassA();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>生成class文件</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">javac ClassA.java</span><br><span class="line">javac ClassB.java</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>执行java -cp命令</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -cp . ClassB</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意：其中ClassB为含有Mai方法的类名，-cp后面需要加上所有依赖的class获取jar；格式为.:&#x2F;home&#x2F;file&#x2F;   路径后面不用带*号</strong></p>
+<p><strong>注意：java -jar和java -cp不能同时使用</strong></p>
+
         </div>
 
         
